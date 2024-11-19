@@ -1,0 +1,39 @@
+.keyboard {
+  background-color: $white_color;
+  border-radius: 10px;
+  @include flex(space-between, center, column);
+  width: 80vw;
+  height: 80vh;
+  gap: 5px;
+
+  [class$="-row"] {	
+    width: 100%;
+    flex-grow: 1;
+    @include flex(space-around, center, row);
+    gap: 5px;
+
+    .key {
+      background-color: $black_color;
+      color: $white_color;
+      border-radius: 5px;
+      height: 100%;
+      flex-grow: 1;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      @include flex;
+      gap: 10px;
+
+      &:hover {
+        background-color: darken($black_color, 10%);
+      }
+    }
+
+    .space {
+      flex-grow: 6;
+    }
+
+    .last-key {
+      flex: 1;
+    }
+  }
+}
