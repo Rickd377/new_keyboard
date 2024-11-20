@@ -4,3 +4,11 @@
   align-items: $align;
   flex-direction: $direction;
 }
+
+@mixin gradient($variable) {
+  background: linear-gradient(to bottom right, $variable 48%, lighten($variable, 5%) 52%),
+              linear-gradient(to bottom left, lighten($variable, 50%) 48%, $variable 52%),
+              linear-gradient(to top right, $variable 48%, lighten($variable, 85%) 52%),
+              linear-gradient(to top left, lighten($variable, 75%) 48%, $variable 52%);
+  background-blend-mode: multiply;
+}

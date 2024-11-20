@@ -1,39 +1,263 @@
 .keyboard {
-  background-color: $white_color;
-  border-radius: 10px;
-  @include flex(space-between, center, column);
+  @include flex(space-between, center, row);
   width: 80vw;
-  height: 80vh;
-  gap: 5px;
+  height: 70vh;
+  background-color: $white_color;
+  gap: 35px;
+  position: relative;
+  padding: 20px;
+  border-radius: 10px;
+
+  .rows {
+    border-radius: 10px;
+    @include flex(space-between, center, column);
+    gap: 5px;
+    height: 100%;
+    flex-grow: 15;
+  }
+
+  .last-keys {
+    border-radius: 10px;
+    @include flex(space-between, center, column);
+    gap: 5px;
+    height: 100%;
+    width: 99px;
+
+    .key {
+      width: 100%;
+
+      &.first {
+        .background {
+          @include gradient($second_row_color);
+        }
+        &::before {
+          background-color: $second_row_color;
+        }
+      }
+
+      &.second {
+        .background {
+          @include gradient($third_row_color);
+        }
+        &::before {
+          background-color: $third_row_color;
+        }
+      }
+
+      &.third {
+        .background {
+          @include gradient($fourth_row_color);
+        }
+        &::before {
+          background-color: $fourth_row_color;
+        }
+      }
+
+      &.fourth {
+        .background {
+          @include gradient($fifth_row_color);
+        }
+        &::before {
+          background-color: $fifth_row_color;
+        }
+      }
+    }
+  }
+
+  .arrows {
+    position: absolute;
+    display: grid;
+    height: 190px;
+    bottom: 10px;
+    right: 30px;
+    width: 300px;
+    flex: auto;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 5px;
+
+    .key {
+      &.top {
+        .background {
+          @include gradient($fifth_row_color);
+        }
+        &::before {
+          background-color: $fifth_row_color;
+        }
+      }
+      &.bottom {
+        .background {
+          @include gradient($sixth_row_color);
+        }
+        &::before {
+          background-color: $sixth_row_color;
+        }
+      }
+    }
+  }
 
   [class$="-row"] {	
     width: 100%;
     flex-grow: 1;
-    @include flex(space-around, center, row);
+    @include flex(space-between, center, row);
     gap: 5px;
 
-    .key {
-      background-color: $black_color;
-      color: $white_color;
-      border-radius: 5px;
-      height: 100%;
-      flex-grow: 1;
-      cursor: pointer;
-      transition: background-color 0.3s;
-      @include flex;
-      gap: 10px;
+    &:first-child {
+      gap: 20px;
+      padding-bottom: 15px;
 
-      &:hover {
-        background-color: darken($black_color, 10%);
+      .key {
+        .background {
+          @include gradient($first_row_color);
+        }
+        &::before {
+          background-color: $first_row_color;
+        }
       }
     }
 
-    .space {
-      flex-grow: 6;
+    &:nth-child(2) {
+      .key {
+        .background {
+          @include gradient($second_row_color);
+        }
+        &::before {
+          background-color: $second_row_color;
+        }
+      }
     }
 
-    .last-key {
+    &:nth-child(3) {
+      .key {
+        @include gradient($third_row_color);
+        &::before {
+          background-color: $third_row_color;
+        }
+      }
+    }
+
+    &:nth-child(4) {
+      .key {
+        .background {
+          @include gradient($fourth_row_color);
+        }
+        &::before {
+          background-color: $fourth_row_color;
+        }
+      }
+    }
+
+    &:nth-child(5) {
+      .key {
+        .background {
+          @include gradient($fifth_row_color);
+        }
+        &::before {
+          background-color: $fifth_row_color;
+        }
+      }
+    }
+
+    &:nth-child(6) {
+      .key {
+        .background {
+          @include gradient($sixth_row_color);
+        }
+        &::before {
+          background-color: $sixth_row_color;
+        }
+      }
+    }
+
+    .key-group {
+      @include flex(space-between, center, row);
+      flex-grow: 4;
+      height: 100%;
+      gap: 5px;
+
+      .key {
+        flex-grow: 1;
+        height: 100%
+      }
+    }
+  }
+
+  .key {
+    background-color: $black_color;
+    color: $white_color;
+    border-radius: 5px;
+    height: 100%;
+    flex-grow: 1;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    @include flex;
+    gap: 10px;
+    text-transform: capitalize;
+    position: relative;
+    overflow: hidden;
+    
+    &.key:not([class*="size__"], .arrows .key) {
       flex: 1;
     }
+
+    &:not(.volume-knob)::before {
+      position: absolute;
+      inset: 15px;
+      content: "";
+      border-radius: 3px;
+      z-index: 2;
+    }
+
+    .background {
+      position: absolute;
+      content: "";
+      inset: 0;
+    }
+
+    span {
+      transform: rotateX(55deg);
+      margin-bottom: -5px;
+      align-self: end;
+      position: relative;
+      z-index: 4;
+    }
+  }
+
+  .invisible {
+    visibility: hidden;
+    width: 100px;
+    flex-grow: unset;
+  }
+
+  .volume-knob {
+    border-radius: 100px;
+    box-shadow: inset 0 0 0 4px darken($volume_knob_color, 10%),
+                0 0 5px rgba($black_color, 0.1);
+    margin-bottom: 10px;
+    aspect-ratio: 1/1;
+    background-color: $volume_knob_color;
+  }
+
+  [class^="size__"] {
+    flex-grow: unset;
+  }
+
+  .size__1 {
+    flex-grow: 1;
+  }
+
+  .size__2 {
+    width: 50px;
+  }
+
+  .size__3 {
+    width: 100px;
+  }
+
+  .size__4 {
+    width: 130px;
+  }
+
+  .size__5 {
+    width: 450px;
   }
 }

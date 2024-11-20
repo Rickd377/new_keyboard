@@ -53,26 +53,163 @@ img {
 }
 
 .keyboard {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  width: 80vw;
+  height: 70vh;
   background-color: #fff;
+  gap: 35px;
+  position: relative;
+  padding: 20px;
+  border-radius: 10px;
+}
+.keyboard .rows {
   border-radius: 10px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-direction: column;
-  width: 80vw;
-  height: 80vh;
   gap: 5px;
+  height: 100%;
+  flex-grow: 15;
+}
+.keyboard .last-keys {
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  gap: 5px;
+  height: 100%;
+  width: 99px;
+}
+.keyboard .last-keys .key {
+  width: 100%;
+}
+.keyboard .last-keys .key.first .background {
+  background: linear-gradient(to bottom right, #bec5bd 48%, #cbd1cb 52%), linear-gradient(to bottom left, white 48%, #bec5bd 52%), linear-gradient(to top right, #bec5bd 48%, white 52%), linear-gradient(to top left, white 48%, #bec5bd 52%);
+  background-blend-mode: multiply;
+}
+.keyboard .last-keys .key.first::before {
+  background-color: #bec5bd;
+}
+.keyboard .last-keys .key.second .background {
+  background: linear-gradient(to bottom right, #95a396 48%, #a3afa4 52%), linear-gradient(to bottom left, white 48%, #95a396 52%), linear-gradient(to top right, #95a396 48%, white 52%), linear-gradient(to top left, white 48%, #95a396 52%);
+  background-blend-mode: multiply;
+}
+.keyboard .last-keys .key.second::before {
+  background-color: #95a396;
+}
+.keyboard .last-keys .key.third .background {
+  background: linear-gradient(to bottom right, #6a786b 48%, #768677 52%), linear-gradient(to bottom left, #f0f1f0 48%, #6a786b 52%), linear-gradient(to top right, #6a786b 48%, white 52%), linear-gradient(to top left, white 48%, #6a786b 52%);
+  background-blend-mode: multiply;
+}
+.keyboard .last-keys .key.third::before {
+  background-color: #6a786b;
+}
+.keyboard .last-keys .key.fourth .background {
+  background: linear-gradient(to bottom right, #505e51 48%, #5c6c5d 52%), linear-gradient(to bottom left, #d3dad4 48%, #505e51 52%), linear-gradient(to top right, #505e51 48%, white 52%), linear-gradient(to top left, white 48%, #505e51 52%);
+  background-blend-mode: multiply;
+}
+.keyboard .last-keys .key.fourth::before {
+  background-color: #505e51;
+}
+.keyboard .arrows {
+  position: absolute;
+  display: grid;
+  height: 190px;
+  bottom: 10px;
+  right: 30px;
+  width: 300px;
+  flex: auto;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 5px;
+}
+.keyboard .arrows .key.top .background {
+  background: linear-gradient(to bottom right, #505e51 48%, #5c6c5d 52%), linear-gradient(to bottom left, #d3dad4 48%, #505e51 52%), linear-gradient(to top right, #505e51 48%, white 52%), linear-gradient(to top left, white 48%, #505e51 52%);
+  background-blend-mode: multiply;
+}
+.keyboard .arrows .key.top::before {
+  background-color: #505e51;
+}
+.keyboard .arrows .key.bottom .background {
+  background: linear-gradient(to bottom right, #363d35 48%, #424b41 52%), linear-gradient(to bottom left, #b5bdb4 48%, #363d35 52%), linear-gradient(to top right, #363d35 48%, white 52%), linear-gradient(to top left, #f8f9f8 48%, #363d35 52%);
+  background-blend-mode: multiply;
+}
+.keyboard .arrows .key.bottom::before {
+  background-color: #363d35;
 }
 .keyboard [class$=-row] {
   width: 100%;
   flex-grow: 1;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   flex-direction: row;
   gap: 5px;
 }
-.keyboard [class$=-row] .key {
+.keyboard [class$=-row]:first-child {
+  gap: 20px;
+  padding-bottom: 15px;
+}
+.keyboard [class$=-row]:first-child .key .background {
+  background: linear-gradient(to bottom right, #bec5bd 48%, #cbd1cb 52%), linear-gradient(to bottom left, white 48%, #bec5bd 52%), linear-gradient(to top right, #bec5bd 48%, white 52%), linear-gradient(to top left, white 48%, #bec5bd 52%);
+  background-blend-mode: multiply;
+}
+.keyboard [class$=-row]:first-child .key::before {
+  background-color: #bec5bd;
+}
+.keyboard [class$=-row]:nth-child(2) .key .background {
+  background: linear-gradient(to bottom right, #bec5bd 48%, #cbd1cb 52%), linear-gradient(to bottom left, white 48%, #bec5bd 52%), linear-gradient(to top right, #bec5bd 48%, white 52%), linear-gradient(to top left, white 48%, #bec5bd 52%);
+  background-blend-mode: multiply;
+}
+.keyboard [class$=-row]:nth-child(2) .key::before {
+  background-color: #bec5bd;
+}
+.keyboard [class$=-row]:nth-child(3) .key {
+  background: linear-gradient(to bottom right, #95a396 48%, #a3afa4 52%), linear-gradient(to bottom left, white 48%, #95a396 52%), linear-gradient(to top right, #95a396 48%, white 52%), linear-gradient(to top left, white 48%, #95a396 52%);
+  background-blend-mode: multiply;
+}
+.keyboard [class$=-row]:nth-child(3) .key::before {
+  background-color: #95a396;
+}
+.keyboard [class$=-row]:nth-child(4) .key .background {
+  background: linear-gradient(to bottom right, #6a786b 48%, #768677 52%), linear-gradient(to bottom left, #f0f1f0 48%, #6a786b 52%), linear-gradient(to top right, #6a786b 48%, white 52%), linear-gradient(to top left, white 48%, #6a786b 52%);
+  background-blend-mode: multiply;
+}
+.keyboard [class$=-row]:nth-child(4) .key::before {
+  background-color: #6a786b;
+}
+.keyboard [class$=-row]:nth-child(5) .key .background {
+  background: linear-gradient(to bottom right, #505e51 48%, #5c6c5d 52%), linear-gradient(to bottom left, #d3dad4 48%, #505e51 52%), linear-gradient(to top right, #505e51 48%, white 52%), linear-gradient(to top left, white 48%, #505e51 52%);
+  background-blend-mode: multiply;
+}
+.keyboard [class$=-row]:nth-child(5) .key::before {
+  background-color: #505e51;
+}
+.keyboard [class$=-row]:nth-child(6) .key .background {
+  background: linear-gradient(to bottom right, #363d35 48%, #424b41 52%), linear-gradient(to bottom left, #b5bdb4 48%, #363d35 52%), linear-gradient(to top right, #363d35 48%, white 52%), linear-gradient(to top left, #f8f9f8 48%, #363d35 52%);
+  background-blend-mode: multiply;
+}
+.keyboard [class$=-row]:nth-child(6) .key::before {
+  background-color: #363d35;
+}
+.keyboard [class$=-row] .key-group {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  flex-grow: 4;
+  height: 100%;
+  gap: 5px;
+}
+.keyboard [class$=-row] .key-group .key {
+  flex-grow: 1;
+  height: 100%;
+}
+.keyboard .key {
   background-color: #000;
   color: #fff;
   border-radius: 5px;
@@ -85,13 +222,59 @@ img {
   align-items: center;
   flex-direction: row;
   gap: 10px;
+  text-transform: capitalize;
+  position: relative;
+  overflow: hidden;
 }
-.keyboard [class$=-row] .key:hover {
-  background-color: black;
-}
-.keyboard [class$=-row] .space {
-  flex-grow: 6;
-}
-.keyboard [class$=-row] .last-key {
+.keyboard .key.key:not([class*=size__], .arrows .key) {
   flex: 1;
+}
+.keyboard .key:not(.volume-knob)::before {
+  position: absolute;
+  inset: 15px;
+  content: "";
+  border-radius: 3px;
+  z-index: 2;
+}
+.keyboard .key .background {
+  position: absolute;
+  content: "";
+  inset: 0;
+}
+.keyboard .key span {
+  transform: rotateX(55deg);
+  margin-bottom: -5px;
+  align-self: end;
+  position: relative;
+  z-index: 4;
+}
+.keyboard .invisible {
+  visibility: hidden;
+  width: 100px;
+  flex-grow: unset;
+}
+.keyboard .volume-knob {
+  border-radius: 100px;
+  box-shadow: inset 0 0 0 4px #cecece, 0 0 5px rgba(0, 0, 0, 0.1);
+  margin-bottom: 10px;
+  aspect-ratio: 1/1;
+  background-color: #e7e7e7;
+}
+.keyboard [class^=size__] {
+  flex-grow: unset;
+}
+.keyboard .size__1 {
+  flex-grow: 1;
+}
+.keyboard .size__2 {
+  width: 50px;
+}
+.keyboard .size__3 {
+  width: 100px;
+}
+.keyboard .size__4 {
+  width: 130px;
+}
+.keyboard .size__5 {
+  width: 450px;
 }/*# sourceMappingURL=style.css.map */
